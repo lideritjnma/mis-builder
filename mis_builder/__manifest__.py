@@ -3,19 +3,18 @@
 
 {
     "name": "MIS Builder",
-    "version": "12.0.3.5.0",
+    "version": "13.0.3.6.4",
     "category": "Reporting",
     "summary": """
         Build 'Management Information System' Reports and Dashboards
     """,
     "author": "ACSONE SA/NV, " "Odoo Community Association (OCA)",
-    "website": "https://github.com/OCA/mis-builder/",
+    "website": "https://github.com/OCA/mis-builder",
     "depends": [
         "account",
         "board",
         "report_xlsx",  # OCA/reporting-engine
         "date_range",  # OCA/server-ux
-        "web_widget_color",  # OCA/web
     ],
     "data": [
         "wizard/mis_builder_dashboard.xml",
@@ -29,7 +28,7 @@
         "report/mis_report_instance_xlsx.xml",
     ],
     "qweb": ["static/src/xml/mis_report_widget.xml"],
-    "installable": False,
+    "installable": True,
     "application": True,
     "license": "AGPL-3",
     "development_status": "Production/Stable",

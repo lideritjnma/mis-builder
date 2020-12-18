@@ -14,25 +14,24 @@ MIS Builder Budget
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fmis--builder-lightgray.png?logo=github
-    :target: https://github.com/OCA/mis-builder/tree/12.0/mis_builder_budget
+    :target: https://github.com/OCA/mis-builder/tree/13.0/mis_builder_budget
     :alt: OCA/mis-builder
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/mis-builder-12-0/mis-builder-12-0-mis_builder_budget
+    :target: https://translation.odoo-community.org/projects/mis-builder-13-0/mis-builder-13-0-mis_builder_budget
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/248/12.0
+    :target: https://runbot.odoo-community.org/runbot/248/13.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
 Create budgets for MIS reports.
 
-This module lets you create budgets for any MIS report. Several budgets
-can be created for a given report template (ie one budget per year). Budget
-figures are provided at the KPI level, with different time periods. A budget
-can then be selected as a data source for a MIS report column, and the report
-will show the budgeted values for each KPI, adjusted for the period of the
-column.
+This module lets you create budgets for any MIS report. Several budgets can be
+created for a given report template (ie one budget per year). Budget figures
+are provided by KPI or by GL account, with different time periods. A budget can
+then be selected as a data source for a MIS report column, and the report will
+show the budgeted values for each KPI, adjusted for the period of the column.
 
 **Table of contents**
 
@@ -42,9 +41,14 @@ column.
 Usage
 =====
 
-To use this module, you first need to flag at least some KPI in a MIS
-report to be budgetable. You also need to configure the accumulation method
-on the KPI according to their type.
+There are two ways to use this module: create budgets by KPI or budgets by
+GL accounts. Currently, the two methods cannot be combined in the same budget.
+
+**Budget by KPIs**
+
+To use this this mode, you first need to flag at least some KPI in a MIS report
+to be budgetable. You also need to configure the accumulation method on the KPI
+according to their type.
 
 The accumulation method determines how budgeted values spanning over a
 time period are transformed to match the reporting period.
@@ -54,12 +58,22 @@ time period are transformed to match the reporting period.
 * Average: values of included period are averaged with a pro-rata temporis weight.
   Typically used for values that do not accumulate over time (eg a number of employees).
 
-When KPI are configured, you need to create a budget, then click on the budget items
-button to create or import the budgeted amounts for all your KPI and time periods.
+When KPI are configured, you need to create a budget, using the MIS Budget (by
+KPIs) menu, then click on the budget items button to create or import the
+budgeted amounts for all your KPI and time periods.
 
-Finally, a column (aka period) must be added to a MIS report instance, selecting your
-newly created budget as a data source. The data will be adjusted to the reporting period
-when displayed. Columns can be compared by adding a column of type "comparison" or "sum".
+**Budget by GL accounts**
+
+You can also create budgets by GL accounts. In this case, the budget is
+populated with one line per GL account (and optionally analytic account and/or
+tags) and time period.
+
+**Add budget columns to report instances**
+
+Finally, a column (aka period) must be added to a MIS report instance,
+selecting your newly created budget as a data source. The data will be adjusted
+to the reporting period when displayed. Columns can be compared by adding a
+column of type "comparison" or "sum".
 
 Known issues / Roadmap
 ======================
@@ -70,6 +84,22 @@ be found on GitHub.
 
 Changelog
 =========
+
+13.0.3.5.0 (2020-03-28)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Features**
+
+- Budget by GL account: allow budgeting by GL account in addition to the
+  existing mechanism to budget by KPI. Budget items have a begin and end
+  date, and when reporting a pro-rata temporis adjustment is made to match
+  the reporting period. (`#259 <https://github.com/OCA/mis-builder/issues/259>`_)
+
+
+13.0.3.4.0 (2020-01-??)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Migration to odoo 13.0.
 
 12.0.3.4.0 (2019-10-26)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +157,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/mis-builder/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/mis-builder/issues/new?body=module:%20mis_builder_budget%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/mis-builder/issues/new?body=module:%20mis_builder_budget%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -168,6 +198,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-sbidoul| 
 
-This module is part of the `OCA/mis-builder <https://github.com/OCA/mis-builder/tree/12.0/mis_builder_budget>`_ project on GitHub.
+This module is part of the `OCA/mis-builder <https://github.com/OCA/mis-builder/tree/13.0/mis_builder_budget>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
